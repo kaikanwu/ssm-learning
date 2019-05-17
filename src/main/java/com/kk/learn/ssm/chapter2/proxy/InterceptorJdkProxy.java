@@ -69,5 +69,4 @@ public class InterceptorJdkProxy implements InvocationHandler {
         interceptor.after(proxy, target, method, args);
 
         return result;
-    }
-}
+    }}

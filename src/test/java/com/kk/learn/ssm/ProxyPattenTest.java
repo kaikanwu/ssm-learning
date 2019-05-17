@@ -1,9 +1,6 @@
 package com.kk.learn.ssm;
 
-import com.kk.learn.ssm.chapter2.proxy.CglibProxyExample;
-import com.kk.learn.ssm.chapter2.proxy.HelloWorld;
-import com.kk.learn.ssm.chapter2.proxy.HelloWorldImpl;
-import com.kk.learn.ssm.chapter2.proxy.JdkProxyExample;
+import com.kk.learn.ssm.chapter2.proxy.*;
 import com.kk.learn.ssm.chapter2.reflect.ReflectServiceImpl;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +24,12 @@ public class ProxyPattenTest {
         ReflectServiceImpl obj = (ReflectServiceImpl) example.getProxy(ReflectServiceImpl.class);
         obj.sayHello("Luka");
 
+    }
+
+    @Test
+    public void testInterceptor() {
+        HelloWorld proxy = (HelloWorld) InterceptorJdkProxy.bind(new HelloWorldImpl(),"com.kk.learn.ssm.chapter2.proxy.MyInterceptor");
+        proxy.sayHelloWorld();
     }
 
 }
