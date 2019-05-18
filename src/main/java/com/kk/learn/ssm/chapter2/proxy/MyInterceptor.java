@@ -16,11 +16,11 @@ public class MyInterceptor implements Interceptor {
 
     @Override
     public void around(Object proxy, Object target, Method method, Object[] args) {
-        System.err.println("反射方法后逻辑");
+        System.err.println("取代了被代理对象的方法");
     }
 
     @Override
     public void after(Object proxy, Object target, Method method, Object[] args) {
-        System.err.println("取代了被代理对象的方法");
+        System.err.println("反射方法后逻辑");
     }
 }
