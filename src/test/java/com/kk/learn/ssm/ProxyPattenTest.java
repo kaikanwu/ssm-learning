@@ -1,5 +1,7 @@
 package com.kk.learn.ssm;
 
+import com.kk.learn.ssm.chapter2.builder.TicketBuilder;
+import com.kk.learn.ssm.chapter2.builder.TicketHelper;
 import com.kk.learn.ssm.chapter2.observer.PDDObserver;
 import com.kk.learn.ssm.chapter2.observer.ProductList;
 import com.kk.learn.ssm.chapter2.observer.TaoBaoObserver;
@@ -51,5 +53,16 @@ public class ProxyPattenTest {
         observable.addObserver(pddObserver);
         observable.addObserver(taoBaoObserver);
         observable.addProduct("【新增产品 1】");
+    }
+
+    @Test
+    public void testBuilder() {
+        TicketHelper helper = new TicketHelper();
+        helper.buildAdult("成人票");
+        helper.buildSoldier("军人票");
+        helper.buildElderly("老人票");
+        helper.buildChildrenNoSeat("无座儿童");
+        helper.buildChildrenForSeat("有座儿童");
+        Object ticket = TicketBuilder.builder(helper);
     }
 }
