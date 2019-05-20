@@ -1,5 +1,8 @@
 package com.kk.learn.ssm;
 
+import com.kk.learn.ssm.chapter2.observer.PDDObserver;
+import com.kk.learn.ssm.chapter2.observer.ProductList;
+import com.kk.learn.ssm.chapter2.observer.TaoBaoObserver;
 import com.kk.learn.ssm.chapter2.proxy.*;
 import com.kk.learn.ssm.chapter2.reflect.ReflectServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -32,4 +35,21 @@ public class ProxyPattenTest {
         proxy.sayHelloWorld();
     }
 
+    @Test
+    public void testMultipleInterceptor() {
+        HelloWorld proxy1 = (HelloWorld) InterceptorJdkProxy.bind(new HelloWorldImpl(), "com.kk.learn.ssm.chapter2.proxy.Interceptor1");
+        HelloWorld proxy2 = (HelloWorld) InterceptorJdkProxy.bind(proxy1, "com.kk.learn.ssm.chapter2.proxy.Interceptor2");
+        HelloWorld proxy3 = (HelloWorld) InterceptorJdkProxy.bind(proxy2, "com.kk.learn.ssm.chapter2.proxy.Interceptor3");
+        proxy3.sayHelloWorld();
+    }
+
+    @Test
+    public void testObserver() {
+        ProductList observable = ProductList.getInstance();
+        TaoBaoObserver taoBaoObserver = new TaoBaoObserver();
+        PDDObserver pddObserver = new PDDObserver();
+        observable.addObserver(pddObserver);
+        observable.addObserver(taoBaoObserver);
+        observable.addProduct("【新增产品 1】");
+    }
 }
