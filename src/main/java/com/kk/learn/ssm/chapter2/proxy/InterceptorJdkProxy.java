@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
+ * 在 JDK 动态代理中使用拦截器
  * @author kaikanwu
  * @date 5/17/2019
  */
