@@ -3,6 +3,7 @@ package com.kk.learn.ssm.chapter2.proxy;
 import java.lang.reflect.Method;
 
 /**
+ * 定义拦截器接口 Interceptor
  * @author kaikanwu
  * @date 5/17/2019
  */
