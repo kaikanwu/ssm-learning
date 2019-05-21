@@ -42,5 +42,4 @@ public class JdkProxyExample implements InvocationHandler {
         System.out.println("在调度真实对象之后的服务");
         return object;
     }
-
 }
