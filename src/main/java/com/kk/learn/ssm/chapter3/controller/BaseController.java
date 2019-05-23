@@ -21,7 +21,7 @@ public class BaseController {
 
         // 通过 XML 构建 SqlSessionFactory
         SqlSessionFactory sqlSessionFactory = null;
-        String resource = "mybatis-config.xml";
+        String resource = "com/kk/learn/ssm/chapter3/mybatis-config.xml";
         InputStream inputStream;
         try {
             inputStream = Resources.getResourceAsStream(resource);
