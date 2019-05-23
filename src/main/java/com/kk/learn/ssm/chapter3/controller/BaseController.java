@@ -1,5 +1,6 @@
 package com.kk.learn.ssm.chapter3.controller;
 
+import com.kk.learn.ssm.chapter3.mapper.RoleMapper;
 import com.kk.learn.ssm.chapter3.pojo.Role;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -29,7 +30,7 @@ public class BaseController {
             e.printStackTrace();
         }
 
-        // SqlSession 事务控制伪代码43
+        // SqlSession 事务控制伪代码
         SqlSession sqlSession = null;
         try {
             sqlSession = sqlSessionFactory.openSession();
@@ -46,11 +47,13 @@ public class BaseController {
 
 
 
+        // 方法1： SqlSession 直接发送 SQL ；
         // Role role = (Role) sqlSession.selectOne("com.kk.learn.ssm.chapter3.mapper.RoleMapper.getRole", 1L); 如果 MyBatis 中只有一个 id 为 getRole 的 SQL， 可以简写
         Role role = (Role) sqlSession.selectOne("getRole", 1L);
 
-
-
+        // 方法2：用 SqlSession 获取 Mapper 接口发送 SQL
+        RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
+        Role role1 = roleMapper.getRole(1L);
 
     }
 }
